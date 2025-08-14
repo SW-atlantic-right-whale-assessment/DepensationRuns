@@ -1,0 +1,195 @@
+---
+title: "Multivariate q"
+author: "Grant Adams"
+date: "5/21/2021"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+$$
+LL = 0.5 * (\log(\text{Index})-log(q\hat{N}^{1+\beta}))^T\Sigma^{-1}(\log(\text{Index})-\log(q\hat{N}^{1+\beta}))
+$$
+$$
+LL = 0.5 * (\log(\textbf{I})-log(q))^T\Sigma^{-1}(\log(\textbf{I})-\log(q))
+$$
+
+$$
+\textbf{I} = \text{Index}/\hat{N}^{1+\beta}
+$$
+
+$$
+q=\exp(\sum\Sigma^{-1}\log(\textbf{I})/\sum\Sigma^{-1})
+$$
+$$
+LL = 0.5 * 
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}^{T}
+%
+\begin{bmatrix}
+\sigma_1^2 & \rho\sigma_1\sigma_2\\
+\rho\sigma_1\sigma_2 & \sigma_2^2
+\end{bmatrix}^{-1}
+%
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}
+$$
+Invert
+$$
+LL = 0.5 * \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}^T
+%
+\begin{bmatrix}
+\sigma_2^2 & -\rho\sigma_1\sigma_2\\
+-\rho\sigma_1\sigma_2 & \sigma_1^2
+\end{bmatrix}
+%
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}
+$$
+Multiply out
+$$
+LL = 0.5 * \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}^T
+%
+\begin{bmatrix}
+\sigma_2^2(I_1-log(q)) -\rho\sigma_1\sigma_2(I_2 -log(q))\\
+-\rho\sigma_1\sigma_2(I_1-log(q)) + \sigma_1^2(I_2 -log(q))
+\end{bmatrix}
+$$
+$$
+LL = 0.5 * \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+I_1-log(q)\\
+I_2 -log(q)
+\end{bmatrix}^T
+%
+\begin{bmatrix}
+\sigma_2^2(I_1-log(q)) -\rho\sigma_1\sigma_2(I_2 -log(q))\\
+-\rho\sigma_1\sigma_2(I_1-log(q)) + \sigma_1^2(I_2 -log(q))
+\end{bmatrix}
+$$
+
+$$LL = \dfrac{{\sigma}_1^2\left(I_2-log(q)\right)^2+
+-2{\varphi}{\sigma}_1{\sigma}_2\left(I_1-log(q)\right)\left(I_2-log(q)\right)
++{\sigma}_2^2\left(I_1-log(q)\right)^2}
+{2\left(1-{\varphi}^2\right){\sigma}_1^2{\sigma}_2^2}
+$$
+
+Take derivative 
+$$\dfrac{dLL}{dq}=-\dfrac{\left({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2\right)log(q)-I_1{\sigma}_2^2+\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2-I_2{\sigma}_1^2}{\left({\varphi}^2-1\right){\sigma}_1^2{\sigma}_2^2x} 
+$$
+Set to zero and solve for q
+$$0=-\dfrac{\left({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2\right)log(q)-I_1{\sigma}_2^2+\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2-I_2{\sigma}_1^2}{\left({\varphi}^2-1\right){\sigma}_1^2{\sigma}_2^2x} 
+$$
+
+$$0=\left({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2\right)log(q)-I_1{\sigma}_2^2+\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2-I_2{\sigma}_1^2
+$$
+
+$$-\left({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2\right)log(q)=-I_1{\sigma}_2^2+\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2-I_2{\sigma}_1^2
+$$
+
+
+$$log(q)=\frac{-I_1{\sigma}_2^2+\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2-I_2{\sigma}_1^2}
+{-({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2)}
+$$
+
+$$q=exp\left(\frac{I_1{\sigma}_2^2-\left(I_2+I_1\right){\varphi}{\sigma}_1{\sigma}_2+I_2{\sigma}_1^2}
+{({\sigma}_2^2-2{\varphi}{\sigma}_1{\sigma}_2+{\sigma}_1^2)}\right)
+$$
+
+
+$$
+\Sigma^{-1}=
+\frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+\sigma_2^2 & -\rho\sigma_1\sigma_2\\
+-\rho\sigma_1\sigma_2 & \sigma_1^2
+\end{bmatrix}
+$$
+Numerator (sum hessian times index)
+$$
+\Sigma^{-1}\textbf{I} = \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+ I_1\sigma_2^2  - I_2\rho \sigma_1\sigma_2 \\
+- I_1\rho\sigma_1\sigma_2 +  I_2\sigma_1^2
+\end{bmatrix}
+$$
+
+$$
+\sum \left( \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+\sigma_2^2 I_1  -\rho\sigma_1\sigma_2 I_2 \\
+-\rho\sigma_1\sigma_2 I_1 + \sigma_1^2 I_2
+\end{bmatrix} \right) =
+\frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)} \sum 
+\begin{bmatrix}
+\sigma_2^2 I_1  -\rho\sigma_1\sigma_2 I_2 \\
+-\rho\sigma_1\sigma_2 I_1 + \sigma_1^2 I_2
+\end{bmatrix}  = \frac{\sigma_2^2 I_1
+-\rho\sigma_1\sigma_2 (I_1 +I_2)+ \sigma_1^2 I_2}
+{\sigma_1^2 \sigma_2^2 (1-\rho^2)}  
+$$
+
+Denominator (sum hessian)
+$$
+\sum
+\frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\begin{bmatrix}
+\sigma_2^2 & -\rho\sigma_1\sigma_2\\
+-\rho\sigma_1\sigma_2 & \sigma_1^2
+\end{bmatrix} = \frac{1}{\sigma_1^2 \sigma_2^2 (1-\rho^2)}
+\sum
+\begin{bmatrix}
+\sigma_2^2 & -\rho\sigma_1\sigma_2\\
+-\rho\sigma_1\sigma_2 & \sigma_1^2
+\end{bmatrix} = \frac{\sigma_2^2 
+-2\rho\sigma_1\sigma_2+ \sigma_1^2 }
+{\sigma_1^2 \sigma_2^2 (1-\rho^2)}  
+$$
+
+$$
+\frac{\sum{\Sigma^{-1}\textbf{I}}}{\sum{\Sigma^{-1}}}=
+\frac{\frac{\sigma_2^2 I_1
+-\rho\sigma_1\sigma_2 (I_1 +I_2)+ \sigma_1^2 I_2}
+{\sigma_1^2 \sigma_2^2 (1-\rho^2)}  }
+{\frac{\sigma_2^2 
+-2\rho\sigma_1\sigma_2+ \sigma_1^2 }
+{\sigma_1^2 \sigma_2^2 (1-\rho^2)}  } 
+= \frac{\sigma_2^2 I_1
+-\rho\sigma_1\sigma_2 (I_1 +I_2)+ \sigma_1^2 I_2  }
+{\sigma_2^2 
+-2\rho\sigma_1\sigma_2+ \sigma_1^2   } 
+= log(q)
+$$
+
+# Sim analytical q
+```{r}
+library(MASS)
+q <- 0.5; beta = 0.2
+Nvec <- seq(50, 200, length.out = 4)
+varcov <- matrix(c(0.2,0.1,0,0,
+                   0.1,0.2,0.1,0,
+                   0,0.1,0.2,0.1,
+                   0,0,0.1,0.2), 4, 4)
+hess <- solve(varcov)
+simddata <- exp(mvrnorm(10000, mu = log(Nvec^(beta+1) * q) - diag(varcov)/2, Sigma = varcov))
+
+q_est <- (apply(simddata,1, function(x) exp(sum((hess) %*% log(x/(Nvec^(beta+1))))/(sum(hess)))))
+mean(q_est)
+```
+
+

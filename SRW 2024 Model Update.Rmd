@@ -1,0 +1,156 @@
+---
+title: "SRW 2023 Update"
+author: "Grant Adams"
+date: "2024-03-13"
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+always_allow_html: yes
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(StateSpaceSIR)
+library(kableExtra)
+library(dplyr)
+
+options(tinytex.verbose = TRUE)
+options(kableExtra.auto_format = FALSE)
+
+mod_avg_table <- read.csv("Model runs/Model_average/Model_average_summary_table.csv") 
+```
+
+
+# 2023 population assessment of southern right whales in the southwestern Atlantic Ocean
+
+Romero, M.A.^^1,2*, M.A. Coscarella 3,4, G.D. Adams 5, J.C. Pedraza 6, R.A. González 1,2 and E.A. Crespo 3
+
+1 Escuela Superior de Ciencias Marinas - Universidad Nacional del Comahue. San Martín 247 (8520) San Antonio Oeste, Río Negro, Argentina.
+
+2 Centro de Investigación Aplicada y Transferencia Tecnológica en Recursos Marinos “Almirante Storni” (CIMAS). Consejo Nacional de Investigaciones Científicas y Técnicas
+(CONICET). Güemes 1030 (8520) San Antonio Oeste, Rio Negro, Argentina.
+3 Laboratorio de Mamíferos Marinos, Centro para el Estudio de Sistemas Marinos (CESIMAR) CENPAT-CONICET, Blvd. Brown 2915 (9120) Puerto Madryn, Chubut, Argentina.
+
+4 Universidad Nacional de la Patagonia San Juan Bosco, Blvd. Brown 3051 (9120) Puerto Madryn, Chubut, Argentina.
+
+5 University of Washington, School of Aquatic and Fishery Science, 1122 NE Boat St (355020) Seattle, WA, United States.
+
+6 Ciclo Básico Común - Área Matemática - Universidad de Buenos Aires. Ciudad Universitaria, Nuñez, Av. Cantilo S/N, Pab 3, Subsuelo (1428) CABA, Argentina.
+
+## Abstract
+We updated the Bayesian state-space surplus production models developed for southern right whale (SRW) Eubalena australis by Romero et al (2022) to include recent aerial-surveys conducted in 2021-2023. Demographic parameters were derived from a model averaged ensemble of 11 Bayesian state-space models from Romero et al (2022) updated with recent data. The population trajectory indicated that the pre-exploitation abundance was close to 58,000 individuals (median = 58,212; 95% CI = 33,329–100,920). The abundance dropped to its lowest abundance levels in the 1830s when fewer than 2,000 individuals remained. The current median population abundance was estimated at 4,742 whales (95% CI = 3,853–6,013), suggesting that the SRW population remains small relative to its pre-exploitation abundance (median depletion P_2021 8.7%). We estimated that close to 36% of the SRW population visits the waters of the Península Valdés, the main breeding ground, every year. 
+
+11 models including depensation were developed that allowed maximum rate of increase (R_max) to vary based on depletion level. The model-averaged population estimated that the pre-exploitation abundance was close to 57,000 individuals (median = 57,132; 95% CI = 31,003–104,985), lower than estimated in Romero et al (2022). We estimated a higher R_max and lower K than in the Romero et al. (2022) due to the inclusion of depensation. The current population abundance was estimated at 4,479 whales (95% CI = 3,663–5,656), suggesting that the SRW population remains small relative to its pre-exploitation abundance (median depletion P_2021 7.9%). 
+
+## Data
+Data mirror those used for the population assessment of southern right whales (SRW) from the southwestern Atlantic ocean described in Romero et al. (2022) and include estimates of annual catch, relative abundance, and absolute abundance in 2010. Both annual catch data and estimate of absolute abundance for 2010 (4,245 whales, SE = 245; IWC 2013) were the same as those from Romero et al. (2022). However, relative abundance estimates were updated to include additional years of aerial-surveys conducted in 2021-2023 (Table 1). This was in addition to survey data from 1999, 2000, and 2005-2019 included in Romero et al. (2022). Estimates of relative abundance were calculated using a two-stage approach described in Romero et al. (2022) using the aerial-survey protocol from Crespo et al. (2019). Estimates of relative abundance can be found in Table 2. 
+
+## Population dynamics modelling
+The population dynamics of the SRW was modelled via Bayesian state-space surplus production models using a sampling-importance-resampling algorithm implemented by McAllister et al. (1999). The surplus-production function was specified as a generalized theta-logistic equation (Pella & Tomlinson 1969). The key estimable population parameters were carrying capacity (K), the maximum rate of increase (R_{max}), and the proportion of K at which maximum production is achieved (P_{msy}). Rather than estimating and assigning a prior to carrying capacity (K) directly, the backwards approach was used, which assigns a prior to a recent abundance N_{recent} and back-calculates the abundance trajectory. Models were run for the period 1648–2023 and projected forward to 2030. Models assumed that the pre-exploitation population was at carrying capacity before the beginning of whaling operations in 1678 (i.e., N_{(1648-1677)}=K).
+
+Eleven models were developed to account for uncertainty regarding model formulation, prior probability specifications, and input data. Five model variations, including the base model, accounted for uncertainty regarding prior distributions for R_{max}, process error, and N_{recent}. Three models were developed to account for uncertainty in the `minimum population size` constraints given multiple estimates of the number of mtDNA haplotypes (IWC 2013). One model variation was developed to account for uncertainty regarding whales that were struck and lost. Two models were developed to account for time-varying and/or density-dependent catchability. Specific details can be found in Table 1 and Table S4 of Romero et al. (2022).
+
+Estimates of annual abundance were derived from multi-model inference using Bayesian model averaging to balance model goodness of fit and model uncertainty, rather than relying on one ‘true’ model (Chang et al 2015). The posterior distributions from the 11 models were sampled relative to the model’s posterior probability based on the calculated Bayes factors assuming all models were equally probable a priori (Kass & Raftery 1995). Bayes factors for each of the eleven models can be found in Table 3. Naming conventions follow Romero et al. (2022).
+
+Table 4 lists the posterior medians and posterior 95% intervals for key population parameters from the model-averaged assessment. Included are population size in 2019, 2023, and 2030. 
+
+## References
+Chang, Y. J., et al. Model selection and multi-model inference for Bayesian surplus production models: a case study for Pacific blue and striped marlin. Fish. Res. 166, 129-139 (2015).
+
+Crespo, E. A., et al. The southwestern Atlantic southern right whale, Eubalaena australis, population is growing but at a decelerated rate. Mar. Mamm. Sci. 35, 93-107 (2019).
+
+International Whaling Commission. Report of the IWC Workshop on the Assessment of Southern Right Whales. J. Cetacean Res. Manage. (Supp) 14, 439-462 (2013).
+
+Kass, R.E. & Raftery, A. E. Bayes factors. J. Am. Stat. Assoc. 90: 773–795 (1995)
+
+McAllister, M. K., Pikitch, E. K., Punt, A. E. & Hilborn, R. Bayesian approach to stock assessment and harvest decisions using the sampling/importance resampling algorithm. Can. J. Fish. Aquat. Sci. 12, 2673-2687 (1999).
+
+Pella, J. J. & Tomlinson, P. K. A generalised stock production model. Inter-American Tropical Tuna Comm. Bull. 13, 421–496 (1969).
+
+Romero, M.A., et al. Historical reconstruction of the population dynamics of southern right whales in the southwestern Atlantic Ocean. Sci. Rep. 12, 3324 (2022).
+
+\newpage
+**Table 1.** Observed total number of whales from the aerial-survey across the monitoring area south of Península Valdés to the limit of the main concentration area, totalling a coastal strip 620 km in length.
+```{r, echo=FALSE}
+
+# Load data
+balle<- read.csv ( "Data/SRW_aerial_survey_1999-2023.csv" , sep=";" , dec=".")
+balle<- balle [c(-11,-12),] #11 y 12 (2004) vuelos con el aerocomander// esta es la seleccion de datos que hice para la los paràmetros para el nùmero de ballenas que dan la vuelta anualmente por PV
+balle <- subset (balle, Year<2024) # Subset years
+
+#### Variable Respuesta ############
+balle$RTA <- (balle$T) # Total of observed whales
+
+# Plot table
+balle %>%
+  dplyr::select(nvuelo, Year, Mes, RTA, Juliano) %>%
+  mutate(Year = as.character(Year)) %>%
+  rename(Flight = nvuelo, Month = Mes, "Observed whales" = RTA, "Julian day" = Juliano ) %>%
+  kable(format.args = list(big.mark = ",")) %>%
+  kable_classic()
+```
+
+\newpage
+**Table 2.** Estimated abundance (A_y: accumulated number of right whales) and log-scale variance-covariance matrix from the two stage regression model. Regression parameters were estimated as follows intercept a=-13.63 (0.67 SE), julian day c=0.17 (0.0060 SE), and Julian day^2 d=-0.00035 (0.000013 SE). Year specific regression parameters (b_y) are given below.
+
+```{r, echo=FALSE}
+# -- Relative abundance
+# - Index 1: Accumulated number of whales
+sw_right_rel_abundance<-read.csv("Data/Accumulated_n_whales_1999_to_2023.csv") 
+
+rel_abund <- sw_right_rel_abundance %>%
+  dplyr::select(Year, B, A_xy_mu_sim) %>%
+  rename(b_y = B, A_y = A_xy_mu_sim)
+
+var_covar <- sw_right_rel_abundance[,paste0("X",1:20)]
+colnames(var_covar) <- sw_right_rel_abundance$Year
+Rel.Abundance.SWRight = cbind(rel_abund, var_covar)
+
+Rel.Abundance.SWRight %>%
+  mutate(Year = as.character(Year)) %>%
+  kableExtra::kable(digits = 4, format.args = list(big.mark = ",")) %>%
+  kable_classic(full_width = T) %>%
+  add_header_above(c(" " = 3, "Sigma" = 20))
+```
+
+\newpage
+**Table 3.** Bayes factor comparison of scenarios. Blank indicates the model was not included in model averaging.
+```{r, echo=FALSE}
+table2 <- read.csv("Model runs/Model_average/Model_average_bayes_factors.csv") 
+
+table2 %>%
+  rename("Bayes factor" = BayesFactor) %>%
+  kableExtra::kable() %>%
+  kable_classic(full_width = F)
+```
+
+\newpage
+**Table 4.** Posterior mean, standard deviations and 50% and 95% Bayesian credible intervals (CI) for the key biological parameters estimated by the model-averaged assessment of the southern right whale Eubalaena australis. P_Min refers to the minimum estimated abundance relative to K.
+
+```{r, echo=FALSE}
+# For plotting make a vector of bayes factors, set NA for models that cant be compared (different likelihood)
+mod_avg_table <- read.csv("Model runs/Model_average/Model_average_summary_table.csv") 
+mod_avg_table$Parameter <- gsub("$", "", mod_avg_table$Parameter)
+
+mod_avg_table[-c(8:10, 21),] %>%
+  rename(`2.5% CI` = `X2.5..CI`,
+         `25% CI` = `X25..CI`,
+         `75% CI` = `X75..CI`,
+         `97.5% CI` = `X97.5..CI`) %>%
+  dplyr::select(-X) %>%
+  kableExtra::kable(digits = 4) %>%
+  kable_classic(full_width = F)
+```
+
+\newpage
+![**Figure 1.** Model averaged population trajectories (blue lines) and time series of estimated catches (red lines) of southern right whale (SRW) Eubalaena australis. The solid blue line represents the median estimated model-averaged trajectory of the population abundance (N_y), while the shaded areas correspond to the 50% and 95% credible intervals. The dashed line represents the median estimated base case trajectory of the abundance. The solid red line represents the average number of whaling catches as estimated by the catch parameter (π), while the red shaded areas correspond to the 50% and 95% credible intervals. The grey and black dots represent the estimated and observed, respectively, absolute abundance in 2010 (confidence and credible intervals can be found in Figure 4).](Model runs/Model_average/Model_average_trajectory_summary.png)
+
+\newpage
+![**Figure 2.** Posterior probability distributions of the key biological parameters for the 2023 Base Case (thick grey line) and model-averaged (thick black line) assessment of southern right whale (SRW) Eubalaena australis. Post-model pre-data probability distributions of the key biological parameters for the Base Case are presented in the thin grey line.](Model runs/Model_average/Model_average_posterior_density.png)
+
+\newpage
+![**Figure 3.** Trend of the observed (black dots) and estimated (grey dots) accumulated numbers of the southern right whale Eubalaena australis and associated 95% confidence interval (black bars) and 95% posterior predictive intervals (grey bars). The solid blue line represents the median estimated model-averaged trajectory of the population abundance (N_y) multiplied by posterior catchability (q), while the shaded areas correspond to the 50% and 95% credible intervals.](Model runs/Model_average/Model_average_IOA_fit.png)
+
+\newpage
+![**Figure 4.** Fits of the observed (black dots) and estimated (grey dots) absolute abundance of southern right whale Eubalaena australis and associated 95% confidence interval (black bars) and 95% posterior predictive intervals (grey bars). The blue line is the median abundance trajectory and the shaded areas correspond to the 50% and 95% credible intervals.](Model runs/Model_average/Model_average_abs_abundance_fit.png)
