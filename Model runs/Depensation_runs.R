@@ -8,7 +8,7 @@ library(plyr)
 # -- Catch
 sw_right_data<-read.delim("Data/datosModeloBallenasmiles2020Miles1648to2019.csv", sep=";",header=FALSE)   
 names(sw_right_data)<- c("Year","CatchMin","CatchMax","Nt")
-sw_right_data <- rbind(sw_right_data, data.frame(Year = 2022:2023, CatchMin = 0, CatchMax = 0, Nt=0))
+sw_right_data <- rbind(sw_right_data, data.frame(Year = 2022:2024, CatchMin = 0, CatchMax = 0, Nt=0))
 
 
 # Four periods of SLRs
@@ -29,7 +29,7 @@ Abs.Abundance.2010 <- data.frame(Year = 2010, N.obs = 4245, CV.obs = 245/4245) #
 
 # -- Relative abundance
 # - Index 1: Accumulated number of whales
-sw_right_rel_abundance<-read.csv("Data/Accumulated_n_whales_1999_to_2023.csv") 
+sw_right_rel_abundance<-read.csv("Data/Accumulated_n_whales_1999_to_2024.csv") 
 
 Rel.Abundance.SWRight <- data.frame(Index = rep(1, nrow(sw_right_rel_abundance)), 
                                     Year = sw_right_rel_abundance$Year, 
@@ -77,7 +77,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -128,7 +128,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -179,7 +179,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -230,7 +230,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -281,7 +281,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -332,7 +332,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -383,7 +383,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -434,7 +434,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,
@@ -485,7 +485,7 @@ for(i in 1:2){
       make_prior(1)),
     target.Yr = 2019,
     num.haplotypes = 24,
-    output.Yrs = c(2021, 2023, 2030),
+    output.Yrs = c(2021, 2024, 2030),
     abs.abundance = Abs.Abundance.2010,
     abs.abundance.key = TRUE,
     rel.abundance = Rel.Abundance.SWRight,

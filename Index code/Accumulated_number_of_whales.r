@@ -60,6 +60,7 @@ A_xy
 # Variance of second stage via numerical simulation ----
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 ndraw = 100000
+set.seed(123)
 Param_draws <- mvrnorm(n = ndraw, mu = as.numeric(nb.Jul.cuad), Sigma = vcov.nb.Jul.cuad) # Simulate 100,000 parameter sets from MLE and variance-covariance matrix, assuming asymptotic normality
 A_xy_mat <- matrix(NA, nrow = nrow(A_xy), ncol = ndraw) # Matrix to save A_xy estimates from each parameter draw
 
