@@ -5,9 +5,9 @@ source("R/plot_density_depensation.R")
 source("R/plot_density.R")
 
 
-################################################################################
-# Base model
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Base model ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Base2/Base2"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_base2[[1]],  file_name = file_name)
@@ -19,9 +19,9 @@ summary_table(sir_base2[[1]],  file_name = file_name)
 plot_suplus_prod(list(sir_base2[[1]]), file_name = file_name, model_names = "Base", coolors = c("#104F55", "#2F0A28", "#3185FC"))
 
 
-################################################################################
-# Depensation model 1 - Hilborn et al 2014
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 1 - Hilborn et al 2014 ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_1/Depensation_1"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation1[[1]],  file_name = file_name)
@@ -31,9 +31,9 @@ plot_ioa(sir_depensation1[[1]],  file_name = file_name, ioa_names = NULL )
 summary_table(sir_depensation1[[1]],  file_name = file_name)
 plot_suplus_prod(list(sir_depensation1[[1]], sir_depensation1[[2]], sir_base2[[1]]), file_name = file_name, model_names = c("Dep-1", "Dep-1 prior", "Base"), coolors = c("#104F55", "#2F0A28", "#3185FC"))
 
-################################################################################
-# Depensation model 2 - Logistic
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 2 - Logistic ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_2/Depensation_2"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation2[[1]],  file_name = file_name)
@@ -45,9 +45,9 @@ plot_suplus_prod(list(sir_depensation2[[1]], sir_depensation2[[2]], sir_base2[[1
 
 
 
-################################################################################
-# Depensation model 3 - Lin & Li 2002
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 3 - Lin & Li 2002 ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_3/Depensation_3"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation3[[1]],  file_name = file_name)
@@ -59,9 +59,9 @@ plot_suplus_prod(list(sir_depensation3[[1]], sir_depensation3[[2]], sir_base2[[1
 
 
 
-################################################################################
-# Depensation model 4 - Haider et al 2017
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 4 - Haider et al 2017 ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_4/Depensation_4"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation4[[1]],  file_name = file_name)
@@ -72,9 +72,9 @@ summary_table(sir_depensation4[[1]],  file_name = file_name)
 plot_suplus_prod(list(sir_depensation4[[1]], sir_depensation4[[2]], sir_base2[[1]]), file_name = file_name, model_names = c("Dep-4", "Dep-4 prior", "Base"), coolors = c("#104F55", "#2F0A28", "#3185FC"))
 
 
-################################################################################
-# Depensation model 5 - Hilborn et al 2014 w beta prior
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 5 - Hilborn et al 2014 w beta prior ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_5/Depensation_5"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation5[[1]],  file_name = file_name)
@@ -86,9 +86,9 @@ summary_table(sir_depensation5[[1]],  file_name = file_name)
 plot_suplus_prod(list(sir_depensation5[[1]], sir_depensation5[[2]], sir_base2[[1]]), file_name = file_name, model_names = c("Dep-1b", "Dep-1b prior", "Base"), coolors = c("#104F55", "#2F0A28", "#3185FC"))
 
 
-################################################################################
-# Depensation model 6 - Logistic w/ beta prior
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 6 - Logistic w/ beta prior ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_6/Depensation_6"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation6[[1]],  file_name = file_name)
@@ -100,9 +100,9 @@ plot_suplus_prod(list(sir_depensation6[[1]], sir_depensation6[[2]], sir_base2[[1
 
 
 
-################################################################################
-# Depensation model 7 - Lin & Li 2002 w/ beta prior
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 7 - Lin & Li 2002 w/ beta prior ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_7/Depensation_7"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation7[[1]],  file_name = file_name)
@@ -114,9 +114,9 @@ plot_suplus_prod(list(sir_depensation7[[1]], sir_depensation7[[2]], sir_base2[[1
 
 
 
-################################################################################
-# Depensation model 8 - Haider et al 2017 w/ beta prior
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+# Depensation model 8 - Haider et al 2017 w/ beta prior ----
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 file_name <- "Model runs/Depensation_8/Depensation_8"
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sir_depensation8[[1]],  file_name = file_name)
