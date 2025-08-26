@@ -55,54 +55,6 @@ for(i in 1:8){
   dir.create(paste0("Model runs/Depensation_",i))
 }
 
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-# Base model ----
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-file_name <- "Model runs/Base2/Base2"
-
-sir_base2 <- list()
-for(i in 1:2){
-  sir_base2[[i]] <-  StateSpaceSIR(
-    file_name = NULL,
-    allee_model = 0,
-    n_resamples = 20000,
-    priors = make_prior_list(r_max =  make_prior(runif, 0, 0.11),
-                             N_obs = make_prior(runif, 100, 10000),
-                             var_N = make_prior(runif, 6.506055e-05, 6.506055e-05 * 10),
-                             z = make_prior(use = FALSE),
-                             Pmsy = make_prior(runif, 0.5, 0.8)),
-    catch_multipliers = make_multiplier_list(
-      make_prior(1),
-      make_prior(rnorm, 1.60 , 0.04), 
-      make_prior(rnorm, 1.09, 0.04),
-      make_prior(1)),
-    target.Yr = 2019,
-    num.haplotypes = 24,
-    output.Yrs = c(2021, 2024, 2030),
-    abs.abundance = Abs.Abundance.2010,
-    abs.abundance.key = TRUE,
-    rel.abundance = Rel.Abundance.SWRight,
-    rel.abundance.key = TRUE, # Indices of abundance
-    count.data = Count.Data, # Not used
-    count.data.key = FALSE, # Don't use count data
-    growth.rate.obs = c(0.074, 0.033, FALSE), # Do not include growth rate
-    growth.rate.Yrs = c(1995, 1996, 1997, 1998), # Not used
-    catch.data = catch_list,
-    control = sir_control(threshold = 1e-05, progress_bar = TRUE),
-    realized_prior = ifelse(i == 1, FALSE, TRUE))
-}
-resample_summary_reference <- summary_sir(sir_base2[[1]]$resamples_output, object = "Resample_Summary", file_name = file_name)
-trajectory_summary_reference <- summary_sir(sir_base2[[1]]$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
-save(sir_base2, file = paste0(file_name, ".Rdata"))
-
-
-load(file = paste0(file_name, ".Rdata"))
-plot_trajectory(sir_base2[[1]],  file_name = file_name)
-plot_trajectory(sir_base2[[2]],  file_name = paste0(file_name, "prior"))
-plot_density(SIR = list(sir_base2[[1]]),  file_name = file_name,   priors = list(sir_base2[[2]]), inc_reference = FALSE)
-plot_ioa(sir_base2[[1]],  file_name = file_name, ioa_names = NULL )
-summary_table(sir_base2[[1]],  file_name = file_name)
-
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
