@@ -173,7 +173,7 @@ for(i in 1:2){
     growth.rate.obs = c(0.074, 0.033, FALSE), # Do not include growth rate
     growth.rate.Yrs = c(1995, 1996, 1997, 1998), # Not used
     catch.data = catch_list,
-    control = sir_control(threshold = 1e-5, progress_bar = TRUE),
+    control = sir_control(threshold = 1e-6, progress_bar = TRUE),
     realized_prior = ifelse(i == 1, FALSE, TRUE))
 }
 resample_summary_reference <- summary_sir(sensitivity_2[[1]]$resamples_output, object = "Resample_Summary", file_name = file_name)
