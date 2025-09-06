@@ -173,7 +173,7 @@ for(i in 1:2){
     growth.rate.obs = c(0.074, 0.033, FALSE), # Do not include growth rate
     growth.rate.Yrs = c(1995, 1996, 1997, 1998), # Not used
     catch.data = catch_list,
-    control = sir_control(threshold = 1e-6, progress_bar = TRUE),
+    control = sir_control(threshold = 0.5e-5, progress_bar = TRUE),
     realized_prior = ifelse(i == 1, FALSE, TRUE))
 }
 resample_summary_reference <- summary_sir(sensitivity_2[[1]]$resamples_output, object = "Resample_Summary", file_name = file_name)
@@ -580,8 +580,6 @@ resample_summary_reference <- summary_sir(sensitivity_10[[1]]$resamples_output, 
 trajectory_summary_reference <- summary_sir(sensitivity_10[[1]]$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
 save(sensitivity_10, file = paste0(file_name, ".Rdata"))
 
-
-
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sensitivity_10[[1]],  file_name = file_name)
 plot_trajectory(sensitivity_10[[2]],  file_name = paste0(file_name, "prior"))
@@ -678,8 +676,6 @@ resample_summary_reference <- summary_sir(sensitivity_12[[1]]$resamples_output, 
 trajectory_summary_reference <- summary_sir(sensitivity_12[[1]]$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
 save(sensitivity_12, file = paste0(file_name, ".Rdata"))
 
-
-
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sensitivity_12[[1]],  file_name = file_name)
 plot_trajectory(sensitivity_12[[2]],  file_name = paste0(file_name, "prior"))
@@ -728,8 +724,6 @@ for(i in 1:2){
 resample_summary_reference <- summary_sir(sensitivity_13[[1]]$resamples_output, object = "Resample_Summary", file_name = file_name)
 trajectory_summary_reference <- summary_sir(sensitivity_13[[1]]$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
 save(sensitivity_13, file = paste0(file_name, ".Rdata"))
-
-
 
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sensitivity_13[[1]],  file_name = file_name)
@@ -780,7 +774,6 @@ for(i in 1:2){
 resample_summary_reference <- summary_sir(sensitivity_14[[1]]$resamples_output, object = "Resample_Summary", file_name = file_name)
 trajectory_summary_reference <- summary_sir(sensitivity_14[[1]]$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
 save(sensitivity_14, file = paste0(file_name, ".Rdata"))
-
 
 load(file = paste0(file_name, ".Rdata"))
 plot_trajectory(sensitivity_14[[1]],  file_name = file_name)
