@@ -1,6 +1,6 @@
 library(StateSpaceSIR)
 library(EnvStats)
-source("R/plot_density.R", echo=TRUE)
+source("R/Functions/plot_density.R", echo=TRUE)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 # Base model ----
