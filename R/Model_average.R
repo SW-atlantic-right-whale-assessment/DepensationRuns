@@ -1,4 +1,7 @@
 library(StateSpaceSIR)
+source("R/Functions/plot_ioa_medians.R")
+source("R/Functions/plot_density_model_average.R")
+source("R/Functions/plot_density.R")
 
 # Load all the models
 file_names <- c("Base/Base",
@@ -44,8 +47,8 @@ for(i in 1:length(sir_list)){
 }
 
 for(i in 2:length(sir_list)){
-  sir_list_tmp <- list(sir_list[[i]][[1]], sir_base[[1]], sir_list[[i]][[1]])
-  plot_density(SIR = sir_list_tmp,  file_name = paste0("Model runs/",file_names[i]),   priors = list(sir_list[[i]][[2]]), inc_reference = TRUE, target = ifelse(i == 7, FALSE, TRUE))
+  sir_list_tmp <- list(sir_list[[i]][[2]], sir_base[[1]], sir_list[[i]][[1]])
+  plot_density(SIR = sir_list_tmp,  file_name = paste0("Model runs/",file_names[i]),  col = c("grey45", 1,1), lwd = c(1,3,3), lty = c(1,1,1))
   plot_trajectory( SIR = sir_list[[i]][[1]], Reference = sir_list[[1]][[1]],  file_name = paste0("Model runs/",file_names[i]))
 }
 
@@ -53,6 +56,8 @@ for(i in 2:length(sir_list)){
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 # Model averaging ----
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+filename <- "Model_average/Model_average"
+
 # Get bayes factor for models with comparable likelihoods
 bayes_f <- bayes_factor(SIR = list(sir_base[[1]],
                                    sensitivity_1[[1]], 
@@ -94,7 +99,7 @@ model_average$inputs$output.Years <- c(1999, 2021, 2024, 2030)
 bayes_vec <- c(bayes_f[1:4], NA,NA, bayes_f[5:6],  NA, NA, bayes_f[7:11], NA)
 model_names <-  c( "B", paste0("S-", 1:14), "MA")
 table2 <- data.frame(Model = model_names, BayesFactor = round(bayes_vec,4))
-write.csv(table2, file = paste0(paste0("Model runs/",file_names[16],"_bayes_factors.csv")))
+write.csv(table2, file = paste0(paste0("Model runs/",filename,"_bayes_factors.csv")))
 
 # Compare Aposteriors of all
 compare_posteriors(
@@ -117,11 +122,11 @@ compare_posteriors(
              model_average), 
   model_names = model_names, 
   bayes_factor = round(bayes_vec,2),
-  file_name = paste0("Model runs/",file_names[16]),
-  years = c(2021, 2030))
+  file_name = paste0("Model runs/",filename),
+  years = c(2021, 2024, 2030))
 
 # Plot and get parameter values from Model Average
-file_name <-paste0("Model runs/",file_names[16])
+file_name <-paste0("Model runs/", filename)
 trajectory_summary_reference <- summary_sir(model_average$resamples_trajectories, object = "Trajectory_Summary", file_name = file_name)
 plot_trajectory(model_average, Reference = sir_base[[1]],  file_name = file_name)
 plot_abs_abundance(model_average,  file_name = file_name)

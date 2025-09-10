@@ -10,13 +10,13 @@
 #' @param lower Vector of lower bounds for x-axis
 #' @param upper Vector of upper bounds for x-axis
 #' @param probs Lower and upper quantiles to use for plot limits if lower and upper are not specified.
-#' @param posteriors_lwd Line width for models
-#' @param posteriors_lty Line type for models
-#' @param posteriors_col Line color for models
+#' @param lwd Line width for models
+#' @param lty Line type for models
+#' @param col Line color for models
 #'
 #' @return Returns and saves a figure with the posterior densities of parameters.
 #' @export
-plot_density <- function(SIR, posteriors_lwd = rep(3, length(SIR)), posteriors_lty = rep(1, length(SIR)), posteriors_col = rep(1, length(SIR)),  file_name = NULL, lower = NULL, upper = NULL, probs = c(0.025, 0.975), target = TRUE){
+plot_density <- function(SIR, lwd = rep(3, length(SIR)), lty = rep(1, length(SIR)), col = rep(1, length(SIR)),  file_name = NULL, lower = NULL, upper = NULL, probs = c(0.025, 0.975), target = TRUE){
   
   # Make into list
   if(class(SIR) == "SIR"){
@@ -174,7 +174,7 @@ plot_density <- function(SIR, posteriors_lwd = rep(3, length(SIR)), posteriors_l
            xlim = c(xlow, xup),
            ylim = c(0, range(sapply(posterior_dens, "[", "y"))[2]),
            ylab = NA, xlab = latex2exp::TeX(vars_latex[i]), yaxt = "n")
-      mapply(lines, posterior_dens, lwd = posteriors_lwd, lty = posteriors_lty, col = posteriors_col[1:length(posterior_dens)])
+      mapply(lines, posterior_dens, lwd = lwd, lty = lty, col = col[1:length(posterior_dens)])
       
       if(i %in% c(ceiling(length(vars)/4) * 1:3))  {
         plot.new()

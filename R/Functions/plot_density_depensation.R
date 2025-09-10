@@ -10,13 +10,13 @@
 #' @param lower Vector of lower bounds for x-axis
 #' @param upper Vector of upper bounds for x-axis
 #' @param probs Lower and upper quantiles to use for plot limits if lower and upper are not specified.
-#' @param posteriors_lwd Line width for models
-#' @param posteriors_lty Line type for models
-#' @param posteriors_col Line color for models
+#' @param lwd Line width for models
+#' @param lty Line type for models
+#' @param col Line color for models
 #'
 #' @return Returns and saves a figure with the posterior densities of parameters.
 #' @export
-plot_density_depensation <- function(SIR, posteriors_lwd = rep(3, length(SIR)), posteriors_lty = rep(1, length(SIR)), posteriors_col = rep(1, length(SIR)),  file_name = NULL, lower = NULL, upper = NULL, probs = c(0.025, 0.975) ){
+plot_density_depensation <- function(SIR, lwd = rep(3, length(SIR)), lty = rep(1, length(SIR)), col = rep(1, length(SIR)),  file_name = NULL, lower = NULL, upper = NULL, probs = c(0.025, 0.975) ){
   
   # Make into list
   if(class(SIR) == "SIR"){
@@ -180,10 +180,10 @@ plot_density_depensation <- function(SIR, posteriors_lwd = rep(3, length(SIR)), 
       
       for(k in 1:length(posterior_dens)){
         if(i == 4 & SIR[[k]]$inputs$allee_model !=0){ # Dont plot Pd parameter for depensation models
-          lines(posterior_dens[[k]], lwd = posteriors_lwd[k], lty = posteriors_lty[k], col = posteriors_col[k])
+          lines(posterior_dens[[k]], lwd = lwd[k], lty = lty[k], col = col[k])
         }
         if(i != 4){
-          lines(posterior_dens[[k]], lwd = posteriors_lwd[k], lty = posteriors_lty[k], col = posteriors_col[k])
+          lines(posterior_dens[[k]], lwd = lwd[k], lty = lty[k], col = col[k])
         }
       }
       
