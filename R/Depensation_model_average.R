@@ -73,6 +73,7 @@ for(i in 2:length(sir_list)){
 filename <- "Depensation_model_average/Depensation_model_average"
 
 # Get bayes factor for models with comparable likelihoods
+set.seed(123)
 bayes_f <- bayes_factor(SIR = list(sir_base[[1]],
                                    sir_depensation1[[1]],
                                    # sir_depensation5[[1]],
