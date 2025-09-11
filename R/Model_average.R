@@ -18,8 +18,7 @@ file_names <- c("Base/Base",
                 "Sensitivity_11/Sensitivity_11",
                 "Sensitivity_12/Sensitivity_12",
                 "Sensitivity_13/Sensitivity_13",
-                "sensitivity_14/sensitivity_14",
-                "Model_average/Model_average")
+                "sensitivity_14/sensitivity_14")
 
 for(i in 1:length(file_names)){
   load(file = paste0("Model runs/",file_names[i], ".Rdata"))
@@ -48,7 +47,7 @@ for(i in 1:length(sir_list)){
 
 for(i in 2:length(sir_list)){
   sir_list_tmp <- list(sir_list[[i]][[2]], sir_base[[1]], sir_list[[i]][[1]])
-  plot_density(SIR = sir_list_tmp,  file_name = paste0("Model runs/",file_names[i]),  col = c("grey45", 1,1), lwd = c(1,3,3), lty = c(1,1,1))
+  plot_density(SIR = sir_list_tmp,  file_name = paste0("Model runs/",file_names[i]),  col = c(1, "grey45",1), lwd = c(1,3,3), lty = c(1,1,1))
   plot_trajectory( SIR = sir_list[[i]][[1]], Reference = sir_list[[1]][[1]],  file_name = paste0("Model runs/",file_names[i]))
 }
 
@@ -77,6 +76,7 @@ bayes_f <- bayes_factor(SIR = list(sir_base[[1]],
 
 
 # Create a new model based on bayes factors
+set.seed(123)
 model_average <- weight_model(SIR = list(sir_base[[1]],
                                          sensitivity_1[[1]], 
                                          sensitivity_2[[1]], 
@@ -133,7 +133,7 @@ plot_abs_abundance(model_average,  file_name = file_name)
 sir_list_ma <- list(model_average, sir_base[[2]], sir_base[[1]], model_average)
 
 
-source("R/plot_density_model_average.R", echo=TRUE)
+source("R/Functions/plot_density_model_average.R", echo=TRUE)
 plot_density_ma(SIR = sir_list_ma, posteriors_lwd = c(3, 1,3,3), posteriors_lty = c(1,1,1,1), posteriors_col = c(1, "grey45", "grey45", 1) ,  file_name = file_name)
 plot_ioa(model_average,  file_name = file_name, ioa_names = NULL)
 summary_table(model_average,  file_name = file_name)
